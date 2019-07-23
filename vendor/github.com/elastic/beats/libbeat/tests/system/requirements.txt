@@ -1,11 +1,12 @@
 pip
 nose
 jinja2
-PyYAML
+PyYAML==3.13
 nose-timer
 redis
 elasticsearch
-requests
+requests==2.19.0
+urllib3=1.21.1
 autopep8
 six
 docker-compose
