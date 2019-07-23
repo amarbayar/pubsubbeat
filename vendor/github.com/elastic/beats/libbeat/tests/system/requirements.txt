@@ -6,7 +6,7 @@ nose-timer
 redis
 elasticsearch
 requests==2.19.0
-urllib3=1.21.1
+urllib3==1.21.1
 autopep8
 six
 docker-compose
