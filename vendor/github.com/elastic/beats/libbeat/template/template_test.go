@@ -4,7 +4,6 @@ package template
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 )
 
@@ -53,4 +52,21 @@ func TestNumberOfRoutingShardsOverwrite(t *testing.T) {
 	assert.NoError(t, err)
 
 	assert.Equal(t, 5, shards.(int))
+}
+
+func TestTypelessTemplate(t *testing.T) {
+
+	beatVersion := "6.1.0"
+	esVersion := "7.2.0"
+	beatName := "testbeat"
+	config := TemplateConfig{}
+
+	template, err := New(beatVersion, beatName, esVersion, config)
+	assert.NoError(t, err)
+
+	data := template.generate(nil, nil)
+	basicStructure := data["mappings"]
+	
+	assert.NotContains(t, basicStructure, "doc")
+	assert.NotContains(t, basicStructure, "_default_")
 }
